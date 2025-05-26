@@ -124,7 +124,7 @@ If you use Regularized Policy Gradient (RPG) in your research or application, pl
 ```bibtex
 @article{zhang2025design,
     title={On the Design of KL-Regularized Policy Gradient Algorithms for LLM Reasoning},
-    author={Zhang, Yifan and Liu, Yifeng and Yuan, Huizhuo and Yuan, Yang and Gu, Quanquan and Yao, Andrew Chi-Chih},
+    author={Zhang, Yifan and Liu, Yifeng and Yuan, Huizhuo and Yuan, Yang and Gu, Quanquan and Yao, Andrew C},
     journal={arXiv preprint arXiv:2505.17508},
     year={2025},
 }
