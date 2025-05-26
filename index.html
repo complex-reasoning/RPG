@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+  <!-- Replace the content tag with appropriate information -->
+  <meta name="description" content="RPG">
+  <meta property="og:title" content="On the Design of KL-Regularized Policy Gradient Algorithms for LLM Reasoning"/>
+  <meta property="og:description" content="On the Design of KL-Regularized Policy Gradient Algorithms for LLM Reasoning. Introducing RPG (Regularized Policy Gradient)"/>
+  <meta property="og:url" content="https://github.com/complex-reasoning/RPG"/>
+  
+
+  <meta name="twitter:title" content="On the Design of KL-Regularized Policy Gradient Algorithms for LLM Reasoning">
+  <meta name="twitter:description" content="On the Design of KL-Regularized Policy Gradient Algorithms for LLM Reasoning. Introducing RPG (Regularized Policy Gradient)">
+  <!-- Keywords for your paper to be indexed by-->
+  <meta name="keywords" content="LLM, RLHF, Reinforcement Learning,RPG">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  <title>On the Design of KL-Regularized Policy Gradient Algorithms for LLM Reasoning</title>
+  <link rel="icon" type="image/x-icon" href="static/images/rpg.ico">
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+  rel="stylesheet">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script src="static/js/bulma-carousel.min.js"></script>
+  <script src="static/js/bulma-slider.min.js"></script>
+  <script src="static/js/index.js"></script>
+</head>
+<body>
+
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">On the Design of KL-Regularized Policy Gradient Algorithms for LLM Reasoning</h1>
+            <div class="is-size-5 publication-authors">
+              <!-- Paper authors -->
+              <span class="author-block">
+                <a href="https://yifzhang.com" target="_blank">Yifan Zhang</a><sup>*</sup>,</span>
+                <span class="author-block">
+                  <a href="https://lauyikfung.github.io/" target="_blank">Yifeng Liu</a><sup>*</sup>,</span>
+                  <span class="author-block">
+                    <a href="https://scholar.google.com/citations?user=8foZzX4AAAAJ" target="_blank">Huizhuo Yuan</a>,</span>
+                      <span class="author-block">
+                        <a href="https://scholar.google.com/citations?user=7o4wtKEAAAAJ&hl=en" target="_blank">Yang Yuan</a>,</span>
+                        <span class="author-block">
+                          <a href="https://web.cs.ucla.edu/~qgu/" target="_blank">Quanquan Gu</a><sup>†</sup>,</span>
+                          <span class="author-block">
+                            <a href="https://en.wikipedia.org/wiki/Andrew_Yao" target="_blank">Andrew C Yao</a><sup>†</sup></span>
+                  </div>
+
+                  <div class="is-size-5 publication-authors">
+                    <span class="author-block">IIIS, Tsinghua University,&nbsp;&nbsp;&nbsp;Shanghai Qi Zhi Institute,</span><br>
+                    <span class="author-block">University of California, Los Angeles,&nbsp;&nbsp;&nbsp;TapTap</span><br>
+                    <span class="eql-cntrb"><small><sup>*</sup>Equal contribution</small></span>
+                    <span class="eql-cntrb"><small><sup>†</sup>Corresponding author</small></span>
+                  </div>
+
+                  <div class="column has-text-centered">
+                    <div class="publication-links">
+                         <!-- Arxiv PDF link -->
+                      <span class="link-block">
+                        <a href="https://arxiv.org/pdf/2505.17508.pdf" target="_blank"
+                        class="external-link button is-normal is-rounded is-dark">
+                        <span class="icon">
+                          <i class="fas fa-file-pdf"></i>
+                        </span>
+                        <span>Paper</span>
+                      </a>
+                    </span>
+
+                  <!-- Github link -->
+                  <span class="link-block">
+                    <a href="https://github.com/complex-reasoning/RPG" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+
+                <!-- ArXiv abstract Link -->
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2505.17508" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+
+              <!-- HuggingFace Model Link -->
+              <span class="link-block">
+                <a href="https://huggingface.co/papers/2505.17508" target="_blank"
+                class="external-link button is-normal is-rounded is-dark">
+                <span class="icon">
+                  <img src="static/images/hf-logo.svg" alt="My Icon">
+                </span>
+                <span>Huggingface</span>
+              </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+            <p>
+                Policy gradient algorithms have been successfully applied to enhance the reasoning capabilities of large language models (LLMs). 
+                Despite the widespread use of Kullback-Leibler (KL) regularization in policy gradient algorithms to stabilize training, 
+                the systematic exploration of how different KL divergence formulations can be estimated and integrated into surrogate loss functions for online reinforcement learning (RL) presents a nuanced and systematically explorable design space. 
+                In this paper, we propose <b>Regularized Policy Gradient (RPG)</b>, a systematic framework for deriving and analyzing KL-regularized policy gradient methods in the online RL setting. 
+                We derive policy gradients and corresponding surrogate loss functions for objectives regularized by both forward and reverse KL divergences, 
+                considering both normalized and unnormalized policy distributions. Furthermore, we present derivations for fully differentiable loss functions as well as REINFORCE-style gradient estimators, 
+                accommodating diverse algorithmic needs. We conduct extensive experiments on RL for LLM reasoning using these methods, 
+                showing improved or competitive results in terms of training stability and performance compared to strong baselines such as GRPO, REINFORCE++, and DAPO.
+            </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+<!-- TPA. -->
+<div class="columns is-centered">
+  <div class="column is-three-fifths">
+    <h2 class="title is-3"> </h2>
+    <h2 class="title is-3">Regularized Policy Gradient</h2>
+    <p align="center">
+      <img src="static/images/framework.png" width="1024" height="768"/>
+    </p>
+  </div>
+</div>
+<!--/ TPA. -->
+<!-- Results. -->
+<div class="columns is-centered">
+  <div class="column is-three-fifths">
+    <div class="content has-text-justified">
+      <ul>
+        <li>
+            We derive policy gradients and corresponding surrogate loss functions for objectives regularized by Forward and Reverse KL divergences, considering both standard normalized (KL) and unnormalized (UKL) forms.
+        </li>
+        <li>
+            Our methods operate within an iterative training framework where the reference model for KL regularization is the policy from the last iteration, providing a dynamic and adaptive regularization target. 
+        </li>
+        <li>
+            We systematically provide derivations for fully differentiable loss functions (offering connections to variational inference) and REINFORCE-style gradient estimators (employing the stop-gradient operator). These are developed for the online setting, using off-policy gradient estimation via importance sampling from a prior policy. We explicitly detail the connection between the k3 estimator and our unnormalized KL (UKL) framework. 
+        </li>
+        <li>
+            Based on our derivations, we identify a theoretical inconsistency in the GRPO objective's KL term estimation and propose a corrected gradient estimator and corresponding loss function that properly incorporates importance weighting. We also analyze the KL handling in REINFORCE++ <a href="https://arxiv.org/pdf/2501.03262">[Hu et. al., 2025]</a>, examining its non-standard KL penalty term and its implications for off-policy regularization.
+        </li>
+        <li>
+            We present extensive experimental results on RL for LLM reasoning, demonstrating that our proposed methods can achieve stable training dynamics and competitive or improved performance compared to strong baselines like GRPO, REINFORCE++, and DAPO <a href="https://arxiv.org/pdf/2503.14476">[Yu et. al., 2025]</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!--/ Results. -->
+
+<!-- Results. -->
+<div class="columns is-centered">
+    <div class="column is-three-fifths">
+      <div class="content has-text-justified">
+        <h4 class="title">Experimental Results</h4>
+        <figure>
+            <p align="center">
+              <img src="static/images/figure2.png" width="900" height="600" alt="Training loss plot"/>
+            </p>
+            <figcaption align="center">
+              Training dynamics and benchmark performance for fully differentiable Regularized Policy Gradient (RPG) compared to baselines (GRPO, DAPO, REINFORCE++, REINFORCE++-Baseline).
+            </figcaption>
+          </figure>
+        <figure>
+          <p align="center">
+            <img src="static/images/figure3.png" width="900" height="600" alt="Validation loss plot"/>
+          </p>
+          <figcaption align="center">
+            Performance of REINFORCE-Style Regularized Policy Gradient (RPG-REINFORCE) methods compared to baselines. Plots display accuracy on mathematical reasoning benchmarks (AMC23, AIME24, AIME25) and key training dynamics (reward, policy entropy, response length).
+          </figcaption>
+        </figure>
+        <figure>
+            <p align="center">
+                <img src="static/images/table3.png" width="800" height="800" alt="The evaluation results of pretrained medium-size models (353M)"/>
+            </p>
+            <figcaption align="center">
+                Combined performance metrics on the AMC23, AIME24, and AIME25 mathematical reasoning benchmarks, showing "Last" and "Best" scores. 
+                The "Last" score is from the 400th training step, assuming the training process remained stable to that point. 
+                The highest score in each column is <b>bolded</b>, and the second highest is <span style="text-decoration:underline;">underlined</span>. 
+                RPG and RPG-REINFORCE methods are highlighted with light cyan and light green backgrounds, respectively.
+            </figcaption>
+          </figure>
+      </div>
+    </div>
+</div>
+<!--/ Results. -->
+
+<!-- Results. -->
+<div class="columns is-centered">
+    <div class="column is-three-fifths">
+      <div class="content has-text-justified">
+        <h4 class="title">Regularized Policy Gradients with fully differentiable surrogate loss functions</h4>
+        <figure>
+            <p align="center">
+              <img src="static/images/table1.png" width="900" height="600" alt="Regularized Policy Gradients with fully differentiable surrogate loss functions"/>
+            </p>
+          </figure>
+      </div>
+    </div>
+</div>
+<!--/ Results. -->
+
+<!-- Results. -->
+<div class="columns is-centered">
+    <div class="column is-three-fifths">
+      <div class="content has-text-justified">
+        <h4 class="title">REINFORCE-Style Regularized Policy Gradients</h4>
+        <figure>
+            <p align="center">
+              <img src="static/images/table2.png" width="900" height="600" alt="REINFORCE-Style Regularized Policy Gradients"/>
+            </p>
+          </figure>
+      </div>
+    </div>
+</div>
+<!--/ Results. -->
+
+<!--BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">Citation</h2>
+      <p>
+        Please cite the paper and star this <a href="https://github.com/complex-reasoning/RPG" target="_blank">repo</a> if you use RPG and find it interesting/useful, thanks! 
+      </p>
+      <pre><code>@article{zhang2025design,
+    title={On the Design of KL-Regularized Policy Gradient Algorithms for LLM Reasoning},
+    author={Zhang, Yifan and Liu, Yifeng and Yuan, Huizhuo and Yuan, Yang and Gu, Quanquan and Yao, Andrew Chi-Chih},
+    journal={arXiv preprint arXiv:2505.17508},
+    year={2025},
+}</code></pre>
+    </div>
+</section>
+<!--End BibTex citation -->
+
+
+  <footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Statcounter tracking code -->
+  
+<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- End of Statcounter Code -->
+
+  </body>
+  </html>
