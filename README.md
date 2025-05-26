@@ -1,4 +1,4 @@
-## On the Design of KL-Regularized Policy Gradient Algorithms for LLM Reasoning
+## RPG: On the Design of KL-Regularized Policy Gradient Algorithms for LLM Reasoning
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)
@@ -119,7 +119,7 @@ Prepare the necessary datasets before training with RPG. We use **filtered DAPO-
 
 ## Citation
 
-If you use RPG in your research or application, please consider citing it!
+If you use Regularized Policy Gradient (RPG) in your research or application, please consider citing it!
 
 ```bibtex
 @article{zhang2025design,
