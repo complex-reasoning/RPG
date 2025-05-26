@@ -189,6 +189,17 @@
         <h4 class="title">Experimental Results</h4>
         <figure>
             <p align="center">
+                <img src="static/images/table3.png" width="800" height="800" alt="The evaluation results of pretrained medium-size models (353M)"/>
+            </p>
+            <figcaption align="center">
+                Combined performance metrics on the AMC23, AIME24, and AIME25 mathematical reasoning benchmarks, showing "Last" and "Best" scores. 
+                The "Last" score is from the 400th training step, assuming the training process remained stable to that point. 
+                The highest score in each column is <b>bolded</b>, and the second highest is <span style="text-decoration:underline;">underlined</span>. 
+                RPG and RPG-REINFORCE methods are highlighted with light cyan and light green backgrounds, respectively.
+            </figcaption>
+        </figure>
+        <figure>
+            <p align="center">
               <img src="static/images/figure2.png" width="900" height="600" alt="Training loss plot"/>
             </p>
             <figcaption align="center">
@@ -203,17 +214,6 @@
             Performance of REINFORCE-Style Regularized Policy Gradient (RPG-REINFORCE) methods compared to baselines. Plots display accuracy on mathematical reasoning benchmarks (AMC23, AIME24, AIME25) and key training dynamics (reward, policy entropy, response length).
           </figcaption>
         </figure>
-        <figure>
-            <p align="center">
-                <img src="static/images/table3.png" width="800" height="800" alt="The evaluation results of pretrained medium-size models (353M)"/>
-            </p>
-            <figcaption align="center">
-                Combined performance metrics on the AMC23, AIME24, and AIME25 mathematical reasoning benchmarks, showing "Last" and "Best" scores. 
-                The "Last" score is from the 400th training step, assuming the training process remained stable to that point. 
-                The highest score in each column is <b>bolded</b>, and the second highest is <span style="text-decoration:underline;">underlined</span>. 
-                RPG and RPG-REINFORCE methods are highlighted with light cyan and light green backgrounds, respectively.
-            </figcaption>
-          </figure>
       </div>
     </div>
 </div>
@@ -258,7 +258,7 @@
       </p>
       <pre><code>@article{zhang2025design,
     title={On the Design of KL-Regularized Policy Gradient Algorithms for LLM Reasoning},
-    author={Zhang, Yifan and Liu, Yifeng and Yuan, Huizhuo and Yuan, Yang and Gu, Quanquan and Yao, Andrew Chi-Chih},
+    author={Zhang, Yifan and Liu, Yifeng and Yuan, Huizhuo and Yuan, Yang and Gu, Quanquan and Yao, Andrew C},
     journal={arXiv preprint arXiv:2505.17508},
     year={2025},
 }</code></pre>
