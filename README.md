@@ -39,7 +39,7 @@ Ensure you have Python 3.10 or higher installed. It's recommended to use a virtu
 1. **Clone the Repository**
 
    ```bash
-   git clone TODO
+   git clone https://github.com/complex-reasoning/RPG.git
    cd RPG
    ```
 
