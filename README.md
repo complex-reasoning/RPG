@@ -5,7 +5,7 @@
 ![PyTorch](https://img.shields.io/badge/PyTorch-2.6.0-orange.svg)
 
 - **RPG (Regularized policy gradient)** is a systematic framework for deriving and analyzing KL-regularized policy gradient methods in the online reinforcement learning (RL) setting. We derive policy gradients and corresponding surrogate loss functions for objectives regularized by both forward and reverse KL divergences, considering both normalized and unnormalized policy distributions. Furthermore, we present derivations for fully differentiable loss functions as well as REINFORCE-style gradient estimators, accommodating diverse algorithmic needs. This repository provides tool for data preparation and RLHF process for the paper "[On the Design of KL-Regularized Policy Gradient Algorithms for LLM Reasoning](https://arxiv.org/abs/2505.17508)".
-- Authors: [Yifan Zhang](https://yifzhang.com)\*, [Yifeng Liu](https://lauyikfung.github.io)\*, [Huizhuo Yuan](https://scholar.google.com/citations?user=8foZzX4AAAAJ), [Yang Yuan](https://scholar.google.com/citations?user=7o4wtKEAAAAJ&hl=en), [Quanquan Gu](https://web.cs.ucla.edu/~qgu/), [Andrew Chi-Chih Yao](https://en.wikipedia.org/wiki/Andrew_Yao)
+- Authors: [Yifan Zhang](https://scholar.google.com/citations?user=ZGeaK6QAAAAJ&hl=en)\*, [Yifeng Liu](https://lauyikfung.github.io)\*, [Huizhuo Yuan](https://scholar.google.com/citations?user=8foZzX4AAAAJ), [Yang Yuan](https://scholar.google.com/citations?user=7o4wtKEAAAAJ&hl=en), [Quanquan Gu](https://web.cs.ucla.edu/~qgu/), [Andrew Chi-Chih Yao](https://en.wikipedia.org/wiki/Andrew_Yao)
 
 [[Webpage](https://complex-reasoning.github.io/RPG)] [[Huggingface](https://huggingface.co/papers/2505.17508)]
 
