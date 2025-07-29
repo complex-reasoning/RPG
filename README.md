@@ -113,10 +113,6 @@ Prepare the necessary datasets before training with RPG. We use **filtered DAPO-
     - [Mathematical Association of America (MAA)](https://artofproblemsolving.com/wiki/index.php/Mathematical_Association_of_America) for providing [AMC-23](https://artofproblemsolving.com/wiki/index.php/AMC_12_Problems_and_Solutions) and [AIME](https://artofproblemsolving.com/wiki/index.php/American_Invitational_Mathematics_Examination) datasets
     - [BytedTsinghua-SIA](https://air.tsinghua.edu.cn/en/About_Us/About_AIR.htm) for providing [DAPO-Math-17k](https://huggingface.co/datasets/BytedTsinghua-SIA/DAPO-Math-17k) dataset
 
-## Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=complex-reasoning/RPG&type=Date)](https://star-history.com/#complex-reasoning/RPG&Date)
-
 ## Citation
 
 If you use Regularized Policy Gradient (RPG) in your research or application, please consider citing it!
