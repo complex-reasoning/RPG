@@ -189,10 +189,19 @@
         <h4 class="title">Experimental Results</h4>
         <figure>
             <p align="center">
-                <img src="static/images/table3.png" width="800" height="800" alt="The evaluation results of pretrained medium-size models (353M)"/>
+                <img src="static/images/table3.png" width="800" height="800" alt="4K context length results"/>
             </p>
             <figcaption align="center">
-                Combined performance metrics on the AMC23, AIME24, and AIME25 mathematical reasoning benchmarks, showing "Last" and "Best" scores. 
+                Combined performance metrics on the AIME24 and AIME25 mathematical reasoning benchmarks, showing "Last" and "Best" scores for 4K context length. 
+                The "Last" score is from the 400th training step, assuming the training process remained stable to that point. 
+                The highest score in each column is <b>bolded</b>, and the second highest is <span style="text-decoration:underline;">underlined</span>. 
+                RPG and RPG-REINFORCE methods are highlighted with light cyan and light green backgrounds, respectively.
+            </figcaption>
+          <p align="center">
+                <img src="static/images/table5.png" width="800" height="800" alt="2K context length results"/>
+            </p>
+             <figcaption align="center">
+                Combined performance metrics on the AIME24 and AIME25 mathematical reasoning benchmarks, showing "Last" and "Best" scores for 2K context length. 
                 The "Last" score is from the 400th training step, assuming the training process remained stable to that point. 
                 The highest score in each column is <b>bolded</b>, and the second highest is <span style="text-decoration:underline;">underlined</span>. 
                 RPG and RPG-REINFORCE methods are highlighted with light cyan and light green backgrounds, respectively.
@@ -203,7 +212,7 @@
               <img src="static/images/figure2.png" width="900" height="600" alt="Training loss plot"/>
             </p>
             <figcaption align="center">
-              Training dynamics and benchmark performance for fully differentiable Regularized Policy Gradient (RPG) compared to baselines (GRPO, DAPO, REINFORCE++, REINFORCE++-Baseline).
+              Training dynamics and benchmark performance for RPG and REINFORCE-style RPG compared to baselines (GRPO, DAPO) with 4K context length.
             </figcaption>
           </figure>
         <figure>
@@ -211,7 +220,7 @@
             <img src="static/images/figure3.png" width="900" height="600" alt="Validation loss plot"/>
           </p>
           <figcaption align="center">
-            Performance of REINFORCE-Style Regularized Policy Gradient (RPG-REINFORCE) methods compared to baselines. Plots display accuracy on mathematical reasoning benchmarks (AMC23, AIME24, AIME25) and key training dynamics (reward, policy entropy, response length).
+            Training dynamics and benchmark performance for RPG and REINFORCE-style RPG compared to baselines (GRPO, DAPO) with 2K context length.
           </figcaption>
         </figure>
       </div>
