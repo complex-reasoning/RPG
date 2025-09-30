@@ -129,14 +129,22 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
             <p>
-                Policy gradient algorithms have been successfully applied to enhance the reasoning capabilities of large language models (LLMs). 
-                Despite the widespread use of Kullback-Leibler (KL) regularization in policy gradient algorithms to stabilize training, 
-                the systematic exploration of how different KL divergence formulations can be estimated and integrated into surrogate loss functions for online reinforcement learning (RL) presents a nuanced and systematically explorable design space. 
-                In this paper, we propose <b>Regularized Policy Gradient (RPG)</b>, a systematic framework for deriving and analyzing KL-regularized policy gradient methods in the online RL setting. 
-                We derive policy gradients and corresponding surrogate loss functions for objectives regularized by both forward and reverse KL divergences, 
-                considering both normalized and unnormalized policy distributions. Furthermore, we present derivations for fully differentiable loss functions as well as REINFORCE-style gradient estimators, 
-                accommodating diverse algorithmic needs. We conduct extensive experiments on RL for LLM reasoning using these methods, 
-                showing improved or competitive results in terms of training stability and performance compared to strong baselines such as GRPO, REINFORCE++, and DAPO.
+                Policy gradient algorithms have been successfully applied to enhance the reasoning capabilities
+                of large language models (LLMs). KL regularization is ubiquitous, yet the design surface, choice
+                of KL direction (forward vs. reverse), normalization (normalized vs. unnormalized), and estimator
+                (k1/k2/k3), is scattered across the literature and often intertwined with off-policy estimation.
+                We ask a focused question: under the off-policy setting, what weighting is required for each KL
+                variant so that the surrogate we optimize yields the exact gradient of the intended KL-regularized
+                objective? We answer this with a compact, unified derivation we call the Regularized Policy
+                Gradient (<b>RPG</b>) view. RPG (i) unifies normalized and unnormalized KL variants and shows
+                that the widely-used k3 penalty is exactly the unnormalized KL; (ii) specifies conditions under
+                which REINFORCE-style losses with stop-gradient are gradient-equivalent to fully differentiable
+                surrogates; (iii) identifies and corrects an off-policy importance-weighting mismatch in GRPO’s
+                KL term; and (iv) introduces RPG-Style Clip, a truncated-importance-sampling step within RPGREINFORCE that enables stable, off-policy policy-gradient training at scale. On mathematical
+                reasoning benchmarks (AIME24, AIME25), RPG-REINFORCE with RPG-Style Clip improves
+                accuracy by up to +6 absolute percentage points over DAPO. Notably, RPG is a stable and
+                scalable RL algorithm for LLM reasoning, realized via (a) a KL-correct objective, (b) truncated
+                importance sampling, and (c) an iterative reference-policy update scheme.
             </p>
         </div>
       </div>
@@ -162,19 +170,20 @@
     <div class="content has-text-justified">
       <ul>
         <li>
-            We derive policy gradients and corresponding surrogate loss functions for objectives regularized by Forward and Reverse KL divergences, considering both standard normalized (KL) and unnormalized (UKL) forms.
+            We derive policy gradients and corresponding surrogate losses for Forward/Reverse KL, in normalized (KL) and unnormalized (UKL) forms, under off-policy sampling with importance weights.        
         </li>
         <li>
-            Our methods operate within an iterative training framework where the reference model for KL regularization is the policy from the last iteration, providing a dynamic and adaptive regularization target. 
+            We give both fully differentiable surrogates and REINFORCE-style losses (with stop-gradient) and prove their gradient-equivalence to the intended regularized objective (Proposition 4.1, Appendix J).        
         </li>
         <li>
-            We systematically provide derivations for fully differentiable loss functions (offering connections to variational inference) and REINFORCE-style gradient estimators (employing the stop-gradient operator). These are developed for the online setting, using off-policy gradient estimation via importance sampling from a prior policy. We explicitly detail the connection between the k3 estimator and our unnormalized KL (UKL) framework. 
+            We introduce RPG-Style Clip, a truncated-importance-weighted REINFORCE estimator that substantially improves stability and variance control while preserving the RPG gradients. 
+        <li>
+            We reveal the equality between the k3 estimator and unnormalized KL (Appendix B), and show that GRPO’s KL penalty omits an essential importance weight under off-policy sampling. We provide a corrected estimator and loss consistent with the intended objective. 
+        <li>
+            We present an iterative training framework that periodically updates the reference model to satisfy KL constraints while allowing the policy to depart meaningfully from the initial checkpoint.
         </li>
         <li>
-            Based on our derivations, we identify a theoretical inconsistency in the GRPO objective's KL term estimation and propose a corrected gradient estimator and corresponding loss function that properly incorporates importance weighting. We also analyze the KL handling in REINFORCE++ <a href="https://arxiv.org/pdf/2501.03262">[Hu et. al., 2025]</a>, examining its non-standard KL penalty term and its implications for off-policy regularization.
-        </li>
-        <li>
-            We present extensive experimental results on RL for LLM reasoning, demonstrating that our proposed methods can achieve stable training dynamics and competitive or improved performance compared to strong baselines like GRPO, REINFORCE++, and DAPO <a href="https://arxiv.org/pdf/2503.14476">[Yu et. al., 2025]</a>
+            On math reasoning, RPG-REINFORCE (with RPG-Style Clip) yields stable and scalable training and outperforms DAPO by up to +6 absolute points on AIME24/25.
         </li>
       </ul>
     </div>
@@ -302,4 +311,5 @@
 
   </body>
   </html>
+
 
