@@ -140,10 +140,10 @@
                 that the widely-used k3 penalty is exactly the unnormalized KL; (ii) specifies conditions under
                 which REINFORCE-style losses with stop-gradient are gradient-equivalent to fully differentiable
                 surrogates; (iii) identifies and corrects an off-policy importance-weighting mismatch in GRPO’s
-                KL term; and (iv) introduces RPG-Style Clip, a truncated-importance-sampling step within RPGREINFORCE that enables stable, off-policy policy-gradient training at scale. On mathematical
+                KL term; and (iv) introduces RPG-Style Clip, a clipped-importance-sampling step within RPGREINFORCE that enables stable, off-policy policy-gradient training at scale. On mathematical
                 reasoning benchmarks (AIME24, AIME25), RPG-REINFORCE with RPG-Style Clip improves
                 accuracy by up to +6 absolute percentage points over DAPO. Notably, RPG is a stable and
-                scalable RL algorithm for LLM reasoning, realized via (a) a KL-correct objective, (b) truncated
+                scalable RL algorithm for LLM reasoning, realized via (a) a KL-correct objective, (b) clipped
                 importance sampling, and (c) an iterative reference-policy update scheme.
             </p>
         </div>
@@ -176,7 +176,7 @@
             We give both fully differentiable surrogates and REINFORCE-style losses (with stop-gradient) and prove their gradient-equivalence to the intended regularized objective (Proposition 4.1, Appendix J).        
         </li>
         <li>
-            We introduce RPG-Style Clip, a truncated-importance-weighted REINFORCE estimator that substantially improves stability and variance control while preserving the RPG gradients. 
+            We introduce RPG-Style Clip, a clipped-importance-weighted REINFORCE estimator that substantially improves stability and variance control while preserving the RPG gradients. 
         <li>
             We reveal the equality between the k3 estimator and unnormalized KL (Appendix B), and show that GRPO’s KL penalty omits an essential importance weight under off-policy sampling. We provide a corrected estimator and loss consistent with the intended objective. 
         <li>
@@ -311,5 +311,6 @@
 
   </body>
   </html>
+
 
 
