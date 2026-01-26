@@ -1,18 +1,25 @@
 ## RPG: On the Design of KL-Regularized Policy Gradient Algorithms for LLM Reasoning
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)
-![PyTorch](https://img.shields.io/badge/PyTorch-2.6.0-orange.svg)
+[![ICLR 2026](https://img.shields.io/badge/ICLR2026-Published-blue)](https://arxiv.org/abs/2505.17508) 
+[![arXiv](https://img.shields.io/badge/arXiv-2505.17508-b31b1b.svg)](https://arxiv.org/abs/2505.17508)
+[![Website](https://img.shields.io/badge/Project-Website-blue)](https://model-architectures.github.io/GRAPE) 
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+![PyTorch](https://img.shields.io/badge/PyTorch-2.6.0-orange.svg) 
+
+**[ICLR 2026]** **RPG: On the Design of KL-Regularized Policy Gradient Algorithms for LLM Reasoning** 
 
 - **RPG (Regularized policy gradient)** is a systematic framework for deriving and analyzing KL-regularized policy gradient methods in the online reinforcement learning (RL) setting. We derive policy gradients and corresponding surrogate loss functions for objectives regularized by both forward and reverse KL divergences, considering both normalized and unnormalized policy distributions. Furthermore, we present derivations for fully differentiable loss functions as well as REINFORCE-style gradient estimators, accommodating diverse algorithmic needs. This repository provides tool for data preparation and RLHF process for the paper "[On the Design of KL-Regularized Policy Gradient Algorithms for LLM Reasoning](https://arxiv.org/abs/2505.17508)".
-- Authors: [Yifan Zhang](https://yifzhang.com)\*, [Yifeng Liu](https://lauyikfung.github.io)\*, [Huizhuo Yuan](https://scholar.google.com/citations?user=8foZzX4AAAAJ), [Quanquan Gu](https://web.cs.ucla.edu/~qgu/), [Andrew Chi-Chih Yao](https://en.wikipedia.org/wiki/Andrew_Yao)
+- Authors: [Yifan Zhang](https://yifzhang.com)\*, [Yifeng Liu](https://lauyikfung.github.io)\*, [Huizhuo Yuan](https://scholar.google.com/citations?user=8foZzX4AAAAJ), [Yang Yuan](), [Quanquan Gu](https://web.cs.ucla.edu/~qgu/), [Andrew Chi-Chih Yao](https://en.wikipedia.org/wiki/Andrew_Yao)
 
 [[Webpage](https://complex-reasoning.github.io/RPG)] [[Huggingface](https://huggingface.co/papers/2505.17508)]
 
+## 🔔 NEWS
+- **[01/26/2026]** Our paper has been accepted to **ICLR 2026**! 
+
 ## Table of Contents
 
-
-  - [On the Design of KL-Regularized Policy Gradient Algorithms for LLM Reasoning](#on-the-design-of-kl-regularized-policy-gradient-algorithms-for-llm-reasoning)
+  - [On the Design of KL-Regularized Policy Gradient Algorithms for LLM Reasoning]()
     - [Table of Contents](#table-of-contents)
     - [Features](#features)
     - [Hardware Requirements](#hardware-requirements)
@@ -20,10 +27,9 @@
     - [Data Preparation](#data-preparation)
     - [Repeat the Experiments](#repeat-the-experiments)
     - [Acknowledgements](#acknowledgements)
-    - [Star History](#star-history)
     - [Citation](#citation)
 
-  ## Features
+## Features
 
   - **Comprehensiveness**: We derive policy gradients and corresponding surrogate loss functions for objectives regularized by Forward and Reverse KL divergences, considering both standard normalized (KL) and unnormalized (UKL) forms.
   - **Flexible RL setting**: We systematically provide derivations for fully differentiable loss functions (offering connections to variational inference) and REINFORCE-style gradient estimators (employing the stop-gradient operator). These are developed for the online setting, using off-policy gradient estimation via importance sampling from a prior policy $\pi_{\mathrm{old}}$.
