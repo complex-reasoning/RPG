@@ -2,7 +2,7 @@
 
 [![ICLR 2026](https://img.shields.io/badge/ICLR2026-Published-blue)](https://arxiv.org/abs/2505.17508) 
 [![arXiv](https://img.shields.io/badge/arXiv-2505.17508-b31b1b.svg)](https://arxiv.org/abs/2505.17508)
-[![Website](https://img.shields.io/badge/Project-Website-blue)](https://model-architectures.github.io/GRAPE) 
+[![Website](https://img.shields.io/badge/Project-Website-blue)](https://complex-reasoning.github.io/RPG) 
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 ![PyTorch](https://img.shields.io/badge/PyTorch-2.6.0-orange.svg) 
