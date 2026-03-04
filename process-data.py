@@ -47,8 +47,10 @@ try:
 
     # Create a new sequential index starting from 1 up to the number of rows
     # Name the new index 'extra_info' as requested
-    print("Generating new sequential index named 'extra_info' from 1...")
-    new_index = pd.RangeIndex(start=1, stop=num_rows + 1, step=1, name='extra_info')
+    print("Generating new sequential index named 'extra_info' from 0...")
+    # NOTE: Project convention (see README) expects extra_info index to be 0..(k-1)
+    # for k repeated copies. So we start from 0 here (not 1).
+    new_index = pd.RangeIndex(start=0, stop=num_rows, step=1, name='extra_info')
 
     # Set the new index for the DataFrame, replacing the old one
     df.index = new_index

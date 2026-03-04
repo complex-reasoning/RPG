@@ -138,8 +138,11 @@ def compute_grpo_outcome_advantage(token_level_rewards: torch.Tensor,
                 id2mean[idx] = torch.tensor(0.0)
                 id2std[idx] = torch.tensor(1.0)
             elif len(id2score[idx]) > 1:
-                id2mean[idx] = torch.mean(torch.tensor(id2score[idx]))
-                id2std[idx] = torch.std(torch.tensor([id2score[idx]]))
+                # NOTE: Use torch.stack to preserve device/dtype and compute std over multiple samples.
+                # Avoid wrapping the list again (e.g., [id2score[idx]]), which would make std meaningless.
+                _scores = torch.stack(id2score[idx])
+                id2mean[idx] = _scores.mean()
+                id2std[idx] = _scores.std()
             else:
                 raise ValueError(f"no score in prompt index: {idx}")
         for i in range(bsz):
@@ -567,9 +570,9 @@ def compute_policy_loss_reinforce(old_log_prob,
     else:
         A = (advantages * w_ + kl_term).detach()
         pg_losses = -A * log_prob
-        pg_clipfrac = verl_F.masked_mean(torch.gt(pg_losses, pg_losses).float(), response_mask)
-        pg_clipfrac_lower = verl_F.masked_mean(
-            torch.gt(pg_losses, pg_losses) * (advantages < 0).float(), response_mask)
+        # NOTE: No clipping is applied in this branch, so clip fraction metrics are defined as 0.
+        pg_clipfrac = torch.zeros((), device=pg_losses.device, dtype=pg_losses.dtype)
+        pg_clipfrac_lower = torch.zeros((), device=pg_losses.device, dtype=pg_losses.dtype)
             
     pg_loss = agg_loss(loss_mat=pg_losses, loss_mask=response_mask, loss_agg_mode=loss_agg_mode)
 
