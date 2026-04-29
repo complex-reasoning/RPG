@@ -56,7 +56,7 @@ Ensure you have Python 3.10 or higher installed. It's recommended to use a virtu
 3. **Install Required Packages**
 
    ```bash
-   pip install -r requirement.txt
+   pip install -r requirements.txt
    ```
 
 ## Data Preparation
