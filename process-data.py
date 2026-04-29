@@ -2,6 +2,15 @@ import pandas as pd
 import numpy as np
 import os # Import os for path manipulation
 
+
+def build_extra_info(value: object, index: int) -> dict[str, object]:
+    if isinstance(value, dict):
+        extra_info = dict(value)
+    else:
+        extra_info = {}
+    extra_info["index"] = index
+    return extra_info
+
 # --- Configuration ---
 # Define the directory containing the input file
 data_directory = 'data'
@@ -30,9 +39,7 @@ try:
         dummy_df.to_parquet(input_parquet_path)
 
 
-    # Read the Parquet file into a pandas DataFrame
-    # We don't need the original index, so we can reset it immediately if needed,
-    # but setting df.index directly below overwrites it anyway.
+    # Read the Parquet file into a pandas DataFrame.
     print(f"Reading Parquet file from: {input_parquet_path}")
     df = pd.read_parquet(input_parquet_path)
     print("Original DataFrame info:")
@@ -45,23 +52,31 @@ try:
     num_rows = len(df)
     print(f"\nDataFrame has {num_rows} rows.")
 
-    # Create a new sequential index starting from 1 up to the number of rows
-    # Name the new index 'extra_info' as requested
-    print("Generating new sequential index named 'extra_info' from 1...")
-    new_index = pd.RangeIndex(start=1, stop=num_rows + 1, step=1, name='extra_info')
+    # RLHFDataset reads row_dict["extra_info"]["index"], so store the repeat
+    # index inside the extra_info column rather than as a pandas index.
+    print("Generating 0-based extra_info.index values...")
+    if "extra_info" in df.columns:
+        existing_extra_info = df["extra_info"].tolist()
+    else:
+        existing_extra_info = [None] * num_rows
 
-    # Set the new index for the DataFrame, replacing the old one
-    df.index = new_index
-    print("New index assigned.")
+    df["extra_info"] = [
+        build_extra_info(value=value, index=index)
+        for index, value in enumerate(existing_extra_info)
+    ]
+    df = df.reset_index(drop=True)
+    print("extra_info.index assigned.")
 
     # Write the modified DataFrame back to a new Parquet file
-    # index=True ensures the new index ('extra_info') is written to the file
     print(f"Writing modified DataFrame to: {output_parquet_path}")
-    df.to_parquet(output_parquet_path, index=True)
+    df.to_parquet(output_parquet_path, index=False)
 
     print("\n--- Success ---")
     print(f"Successfully processed '{input_parquet_path}'.")
-    print(f"Created new index named 'extra_info' from 1 to {num_rows}.")
+    if num_rows:
+        print(f"Created 0-based extra_info.index values from 0 to {num_rows - 1}.")
+    else:
+        print("Created empty extra_info.index values.")
     print(f"Output saved to '{output_parquet_path}'.")
 
     # Display the first few rows with the new index to verify
